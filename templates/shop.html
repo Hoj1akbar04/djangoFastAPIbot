@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="untree_co-section product-section before-footer-section">
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <!-- Start Column 1 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5">
+                    <a class="product-item" href="{% url 'detail' product.slug %}">
+                        <img src="{{ product.image.url }}" class="product-thumbnail" width="250px" height="250px" alt="Product Image">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <strong class="product-price">{{ product.price_type }} {{ product.price }}</strong>
+                    </a>
+                    {% if user.is_staff %}
+                <div class="btn-container">
+                    <a class="btn btn-primary" href="{% url 'product-update' product.slug %}">Update</a>
+                    <a class="btn btn-danger" href="{% url 'product-delete' product.slug %}">Delete</a>
+                </div>
+            {% endif %}
+                </div>
+                <!-- End Column 1 -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

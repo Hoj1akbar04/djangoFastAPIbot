@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				
+				
+				<div class="row my-5">
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/truck.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Fast &amp; Free Shipping</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/bag.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Easy to Shop</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/support.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>24/7 Support</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/return.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Hassle Free Returns</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/truck.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Fast &amp; Free Shipping</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/bag.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Easy to Shop</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/support.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>24/7 Support</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="../static/main/images/return.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Hassle Free Returns</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+				</div>
+			
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start Product Section -->
+				<!-- Start Product Section -->
+		<div class="product-section">
+			<div class="container">
+				<div class="row">
+					<!-- Start Column 1 -->
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
+						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
+						<p><a href="{%url 'shop'%}" class="btn">Explore</a></p>
+					</div>
+					<!-- End Column 1 -->
+					<!-- Start Column 4 -->
+					{%for product in products %}
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="{% url 'detail' product.slug %}">
+							<img src="{{product.image.url}}" class="product-thumbnail" width="280px" height="280px">
+							<h3 class="product-title">{{product.name}}</h3>
+							<strong class="product-price">{{product.price_type}}{{product.price}}</strong>
+
+							<span class="icon-cross">
+								<svg href="" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="white"><path d="M12 15a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/><path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69c.12.362.12.752 0 1.113c-1.487 4.471-5.705 7.697-10.677 7.697c-4.97 0-9.186-3.223-10.675-7.69a1.76 1.76 0 0 1 0-1.113M17.25 12a5.25 5.25 0 1 1-10.5 0a5.25 5.25 0 0 1 10.5 0" clip-rule="evenodd"/></g></svg>
+							</span>
+						</a>
+					</div>
+
+					{%endfor%}
+					<!-- End Column 4 -->
+
+				</div>
+			</div>
+		</div>
+		<!-- End Product Section -->
+
+		
+
+		<!-- Start Testimonial Slider -->
+		<div class="testimonial-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 mx-auto text-center">
+						<h2 class="section-title">Testimonials</h2>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="testimonial-slider-wrap text-center">
+
+							<div id="testimonial-nav">
+								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+							</div>
+
+							<div class="testimonial-slider">
+
+
+							{%for comment in comments%}
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>&ldquo; {{comment.comment}} &rdquo;</p>
+												</blockquote>
+
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="{{comment.image.url}}" alt="{{comment.name}}" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">{{comment.name}}</h3>
+													<span class="position d-block mb-3">{{comment.date}}</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							{%endfor%}
+								<!-- END item -->
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Testimonial Slider -->
+
+		
+
+{% endblock %}

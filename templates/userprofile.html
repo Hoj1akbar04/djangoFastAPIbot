@@ -1,0 +1,98 @@
+{% load static %}
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-card {
+        background: white;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .profile-card header {
+        background: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .profile-card header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .profile-card header p {
+        margin: 5px 0;
+        font-size: 16px;
+    }
+
+    .profile-card .profile-bio {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .profile-card .profile-bio h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .profile-card .profile-bio p {
+        margin: 10px 0;
+        font-size: 14px;
+        color: grey;
+    }
+
+    .profile-card .profile-bio .status {
+        margin: 20px 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #4CAF50;
+    }
+
+    .profile-card .profile-bio a button {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    .profile-card .profile-bio a button:hover {
+        background: #45a049;
+    }
+</style>
+
+<aside class="profile-card">
+    <header>
+        <h3>Username</h3>
+        <h2>{{ user.username }}</h2>
+
+    </header>
+    <div class="profile-bio">
+        <p>Password</p>
+        <h2>You can't see your password because it is hidden!</h2>
+        <h3>Status</h3>
+        {% if user.is_staff %}
+            <p class="status">ADMIN</p>
+        {% else %}
+            <p class="status">USER</p>
+        {% endif %}
+        <a href="{% url 'landing' %}">
+            <button>Back</button>
+        </a>
+    </div>
+</aside>

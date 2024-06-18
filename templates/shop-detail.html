@@ -1,0 +1,114 @@
+{% load static %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: white;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex-wrap: wrap;
+    }
+
+    .product img {
+        width: 45%;
+        border-radius: 8px;
+        max-width: 400px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        width: 50%;
+        padding: 20px;
+        max-width: 500px;
+    }
+
+    .product-details h1 {
+        margin: 0 0 10px;
+        font-size: 28px;
+    }
+
+    .product-details p {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .product-details .price {
+        font-size: 24px;
+        color: #28a745;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+
+    .product-details .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        border: none;
+    }
+
+    .product-details .btn:hover {
+        background-color: #218838;
+    }
+
+    .ad {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #343a40;
+        color: whitesmoke;
+        border-radius: 4px;
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .ad:hover {
+        background-color: aqua;
+        color: yellowgreen;
+    }
+
+    .ad:active {
+        background-color: red;
+        color: #dce5e4;
+    }
+</style>
+
+<div class="container">
+    <div class="product">
+        <img src="{{ products.image.url }}" alt="Product Image">
+        <div class="product-details">
+            <h1>{{ products.name }}</h1>
+            <strong>Description</strong>
+            <p>{{ products.description }}</p>
+            <p class="price">{{ products.price }} {{ products.price_type }}</p>
+            <button type="button" class="btn" id="add-cart" value="{{ products.slug }}">Add to Cart</button>
+            <a href="{% url 'shop' %}" class="ad">Back</a>
+        </div>
+    </div>
+</div>

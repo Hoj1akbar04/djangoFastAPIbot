@@ -1,0 +1,250 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="../static/main/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="../static/main/css/tiny-slider.css" rel="stylesheet">
+		<link href="../static/main/css/style.css" rel="stylesheet">
+		<title>Furni by Hojiakbar </title>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	</head>
+
+	<body>
+
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			{% csrf_token %}
+
+			<div class="container">
+				<a class="navbar-brand" href="{%url 'landing'%}">Furni<span>.</span></a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<form method="get" action="{% url 'shop' %}" class="form-inline my-2 my-lg-0">
+    						<div class="input-group">
+        						<input type="text" class="form-control" placeholder="Search for products" name="search">
+        						<div class="input-group-append">
+            						<button class="btn btn-outline-secondary" type="submit">Search</button>
+								</div>
+    						</div>
+						</form>
+
+						<li class="nav-item">
+							{% if request.user.is_authenticated %}
+							<a class="nav-link " href="{%url 'landing'%}">Home</a>
+							{% else %}
+							<a class="nav-link " href="{%url 'register'%}">Home</a>
+							{% endif %}
+						</li>
+						<li class="">
+							{% if request.user.is_authenticated %}
+							<a class="nav-link" href="{%url 'shop'%}">Shop</a>
+							{% else %}
+							<a class="nav-link" href="{%url 'register'%}">Shop</a>
+							{% endif %}
+						</li>
+						<li>
+							{% if request.user.is_authenticated %}
+							<a class="nav-link" href="{%url 'about'%}">About us</a>
+							{% else %}
+							<a class="nav-link" href="{%url 'register'%}">About us</a>
+							{% endif %}
+						</li>
+						<li>
+							{% if request.user.is_authenticated %}
+							<a class="nav-link" href="{%url 'services'%}">Services</a>
+							{% else %}
+							<a class="nav-link" href="{%url 'register'%}">Services</a>
+							{% endif %}
+						</li>
+						<li>
+							{% if request.user.is_authenticated %}
+							<a class="nav-link" href="{%url 'blog'%}">Blog</a>
+							{% else %}
+							<a class="nav-link" href="{%url 'register'%}">Blog</a>
+							{% endif %}
+						</li>
+						<li>
+							{% if request.user.is_authenticated %}
+							<a class="nav-link" href="{%url 'contact'%}">Contact us</a>
+							{% else %}
+							<a class="nav-link" href="{%url 'register'%}">Contact us</a>
+							{% endif %}
+						</li>
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+    					<li class="nav-item dropdown">
+        					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            					<img src="../static/main/images/user.svg" alt="UserProfile">
+        					</a>
+        			<ul class="dropdown-menu" aria-labelledby="userDropdown">
+			{% if request.user.is_authenticated %}
+			<li><a class="dropdown-item" href="{%url 'profile'%}">Profile <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="black"><path d="M32 20a8 8 0 1 1-16 0a8 8 0 0 1 16 0"/><path fill-rule="evenodd" d="M23.184 43.984C12.517 43.556 4 34.772 4 24C4 12.954 12.954 4 24 4s20 8.954 20 20s-8.954 20-20 20h-.274q-.272 0-.542-.016M11.166 36.62a3.028 3.028 0 0 1 2.523-4.005c7.796-.863 12.874-.785 20.632.018a2.99 2.99 0 0 1 2.498 4.002A17.94 17.94 0 0 0 42 24c0-9.941-8.059-18-18-18S6 14.059 6 24c0 4.916 1.971 9.373 5.166 12.621" clip-rule="evenodd"/></g></svg></a></li>
+            <li><a class="dropdown-item" href="{%url 'register'%}">Logout <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 8 8"><path fill="black" d="M3 0v1h4v5H3v1h5V0zM2 2L0 3.5L2 5V4h4V3H2z"/></svg></a></li>
+			{%else%}
+			<li><a class="dropdown-item" href="{%url 'login'%}">Login <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="black" d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8z"/></svg></a></li><li><a class="dropdown-item" href="{%url 'register'%}">Register <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="black" fill-rule="evenodd" d="M1.5 2h13l.5.5v10l-.5.5h-13l-.5-.5v-10zM2 3v9h12V3zm2 2h8v1H4zm6 2H4v1h6zM4 9h4v1H4z" clip-rule="evenodd"/></svg></a></li>
+			{% endif %}
+        </ul>
+    </li>
+    <li class="nav-item">
+		{% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'cart' %}">
+            <img src="../static/main/images/cart.svg" alt="Cart">
+        </a>
+		{% else %}
+		<a class="nav-link" href="{% url 'register' %}">
+            <img src="../static/main/images/cart.svg" alt="Cart">
+        </a>
+		{% endif %}
+    </li>
+</ul>
+
+				</div>
+			</div>
+		</nav>
+		<!-- End Header/Navigation -->
+
+
+
+
+
+	{% block content %}
+	{% endblock %}
+
+
+
+
+
+
+
+
+
+		<!-- Start Footer Section -->
+		<footer class="footer-section">
+			<div class="container relative">
+
+				<div class="sofa-img">
+					<img src="../static/main/images/sofa.png" alt="Image" class="img-fluid">
+				</div>
+
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="subscription-form">
+							<h3 class="d-flex align-items-center"><span class="me-1"><img src="../static/main/images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+
+							<form action="#" class="row g-3">
+								<div class="col-auto">
+									<input type="text" class="form-control" placeholder="Enter your name">
+								</div>
+								<div class="col-auto">
+									<input type="email" class="form-control" placeholder="Enter your email">
+								</div>
+								<div class="col-auto">
+									<button class="btn btn-primary">
+										<span class="fa fa-paper-plane"></span>
+									</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+
+						<ul class="list-unstyled custom-social">
+							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="{% url 'about' %}">About us</a></li>
+									<li><a href="{% url 'services' %}">Services</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'contact' %}">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="{% url 'contact' %}">Support</a></li>
+									<li><a href="#">Knowledge base</a></li>
+									<li><a href="#">Live chat</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Nordic Chair</a></li>
+									<li><a href="#">Kruzo Aero</a></li>
+									<li><a href="#">Ergonomic Chair</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</footer>
+		<!-- End Footer Section -->
+
+
+		<script src="../static/main/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/main/js/tiny-slider.js"></script>
+		<script src="../static/main/js/custom.js"></script>
+	</body>
+
+</html>

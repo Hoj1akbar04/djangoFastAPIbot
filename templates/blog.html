@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+		
+
+		<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				
+				<div class="row">
+
+
+				{%for blog in blogs%}
+					<div class="col-12 col-sm-6 col-md-4 mb-5">
+						<div class="post-entry">
+							<a href="" class="post-thumbnail"><img src="{{blog.image.url}}" alt="Image" width="300px" height="300px"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">{{blog.name}}</a></h3>
+								<div class="meta">
+									<span>by <a href="#">{{blog.who}}</a></span> <span>on <a href="#">{{blog.date}}</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				{%endfor%}
+
+
+				</div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
+
+		
+
+		<!-- Start Testimonial Slider -->
+		<div class="testimonial-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 mx-auto text-center">
+						<h2 class="section-title">Testimonials</h2>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="testimonial-slider-wrap text-center">
+
+							<div id="testimonial-nav">
+								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+							</div>
+
+							<div class="testimonial-slider">
+
+
+							{%for comment in comments%}
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>&ldquo; {{comment.comment}} &rdquo;</p>
+												</blockquote>
+
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="{{comment.image.url}}" alt="{{comment.name}}" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">{{comment.name}}</h3>
+													<span class="position d-block mb-3">{{comment.date}}</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							{%endfor%}
+								<!-- END item -->
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Testimonial Slider -->
+
+{% endblock %}
